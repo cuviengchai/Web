@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<html>
+<head>
+<title>Student Page</title>
+<meta charset="UTF-8">
+</head>
+<!-- Load c3.css -->
+<link href="C:\Users\Chawit\Desktop\tpk\learn_html\Prin_Market\c3\c3.css" rel="stylesheet">
+
+<!-- Load d3.js and c3.js -->
+<script src="C:\Users\Chawit\Desktop\tpk\learn_html\Prin_Market\c3\d3.v3.min.js" charset="utf-8"></script>
+<script src="C:\Users\Chawit\Desktop\tpk\learn_html\Prin_Market\c3\c3.min.js"></script>
+
+<style>
+  .chart.color1 {
+    background-color: #F00;
+  }
+
+  .chart.color2 {
+    background-color: #F1F1F1;
+  }
+
+  .chart.color3 {
+    background-color: #0F0;
+  }
+</style>
+
+<body>
+  <div>
+    <div class="chart color1"></div>
+    <button onclick="onMouseBtnClick(event)">Male_Female!</button>
+  </div>
+  <div>
+    <div class="chart color2"></div>
+    <button onclick="onMouseBtnClick(event)">Chal is Me!</button>
+  </div>
+  <button onClick="changeChart()">Change Chart</button>
+</body>
+<script>
+var colorNum = 3;
+function changeChart() {
+  var allCharts = document.getElementsByClassName("chart");
+  console.log(allCharts);
+  for(var i = 0; i < allCharts.length; i++) {
+    var num = parseInt(allCharts[i].className[(allCharts[i].className.indexOf("color") + 5)])
+    console.log(i,num);
+    var new_num = (num+1)%colorNum === 0 ? colorNum : (num+1)%colorNum;
+    console.log(i,new_num);
+    allCharts[i].className = allCharts[i].className.replace("color" + String(num), "color" + String(new_num));
+  }
+}
+
+var totalChart = []
+
+function createChart(target, data) {
+  return c3.generate({
+    data: {
+        columns: data,
+        type : 'pie',
+        onclick: function (d, i) {
+          console.log(d, i);
+        }
+      },
+    bindto: target
+  });
+}
+
+function onMouseBtnClick(e) {
+  // console.log(obj, e);
+  let randomRatio = Math.random()*100;
+  totalChart.push(createChart(e.target.parentElement.children[0], [
+      ['data1', randomRatio],
+      ['data2', 100-randomRatio],
+  ]));
+}
+
+
+// setTimeout(function () {
+//     chart.load({
+//         columns: [
+//             ["setosa", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2],
+//             ["versicolor", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3],
+//             ["virginica", 2.5, 1.9, 2.1, 1.8, 2.2, 2.1, 1.7, 1.8, 1.8, 2.5, 2.0, 1.9, 2.1, 2.0, 2.4, 2.3, 1.8, 2.2, 2.3, 1.5, 2.3, 2.0, 2.0, 1.8, 2.1, 1.8, 1.8, 1.8, 2.1, 1.6, 1.9, 2.0, 2.2, 1.5, 1.4, 2.3, 2.4, 1.8, 1.8, 2.1, 2.4, 2.3, 1.9, 2.3, 2.5, 2.3, 1.9, 2.0, 2.3, 1.8],
+//         ]
+//     });
+// }, 2500);
+
+// setTimeout(function () {
+//     chart.unload({
+//         ids: 'male'
+//     });
+//     chart.unload({
+//         ids: 'female'
+//     });
+// }, 2500);
+</script>
+</html>

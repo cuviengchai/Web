@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<html>
+<head>
+<title>Student Page</title>
+<meta charset="UTF-8">
+</head>
+<!-- Load c3.css -->
+<link href="C:\Users\Chawit\Desktop\tpk\learn_html\Prin_Market\c3\c3.css" rel="stylesheet">
+
+<!-- Load d3.js and c3.js -->
+<script src="C:\Users\Chawit\Desktop\tpk\learn_html\Prin_Market\c3\d3.v3.min.js" charset="utf-8"></script>
+<script src="C:\Users\Chawit\Desktop\tpk\learn_html\Prin_Market\c3\c3.min.js"></script>
+
+<div id="chart"></div>
+<script>
+var chart = c3.generate({
+  data: {
+      columns: [
+          ['year', 24, 33, 39, 44, 13]
+      ]
+  }
+});
+
+// setTimeout(function () {
+//   chart.load({
+//       columns: [
+//           ['data1', 230, 190, 300, 500, 300, 400]
+//       ]
+//   });
+// }, 1000);
+//
+// setTimeout(function () {
+//   chart.load({
+//       columns: [
+//           ['data3', 130, 150, 200, 300, 200, 100]
+//       ]
+//   });
+// }, 1500);
+//
+// setTimeout(function () {
+//   chart.unload({
+//       ids: 'data1'
+//   });
+// }, 2000);
+
+</script>
+<script>
+var chart = c3.generate({
+    data: {
+        columns: [
+            ['freshman', 24],
+            ['sophormore', 33],
+            ['junior', 39],
+            ['senior', 44],
+            ['etc', 13]
+        ],
+        type : 'donut',
+        onclick: function (d, i) { console.log("onclick", d, i); },
+        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+    },
+    donut: {
+        title: "Student's year"
+    }
+});
+
+// setTimeout(function () {
+//     chart.load({
+//         columns: [
+//             ["setosa", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2],
+//             ["versicolor", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3],
+//             ["virginica", 2.5, 1.9, 2.1, 1.8, 2.2, 2.1, 1.7, 1.8, 1.8, 2.5, 2.0, 1.9, 2.1, 2.0, 2.4, 2.3, 1.8, 2.2, 2.3, 1.5, 2.3, 2.0, 2.0, 1.8, 2.1, 1.8, 1.8, 1.8, 2.1, 1.6, 1.9, 2.0, 2.2, 1.5, 1.4, 2.3, 2.4, 1.8, 1.8, 2.1, 2.4, 2.3, 1.9, 2.3, 2.5, 2.3, 1.9, 2.0, 2.3, 1.8],
+//         ]
+//     });
+// }, 1500);
+//
+// setTimeout(function () {
+//     chart.unload({
+//         ids: 'data1'
+//     });
+//     chart.unload({
+//         ids: 'data2'
+//     });
+// }, 2500);
+//</script>
+</html>
